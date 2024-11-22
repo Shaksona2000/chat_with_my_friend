@@ -8,6 +8,7 @@ import androidx.test.espresso.assertion.ViewAssertions
 import androidx.test.espresso.contrib.RecyclerViewActions
 import androidx.test.espresso.matcher.ViewMatchers
 import androidx.viewpager.widget.ViewPager
+import com.atiurin.ultron.extensions.perform
 import org.hamcrest.Matcher
 import org.hamcrest.core.IsNot.not
 
@@ -156,4 +157,7 @@ fun Matcher<View>.getViewPagerCount(): Int {
 fun Matcher<View>.assertIfViewIsFocused(timeOutInSec: Int = 3) {
     waitForViewVisible(timeOutInSec)
     onView(this).check(ViewAssertions.matches(ViewMatchers.isFocused()))
+}
+fun Matcher<View>.tap() {
+    perform(ViewActions.click()) // This simulates a tap on the view
 }
